@@ -14,6 +14,14 @@ It demonstrates working with REST APIs (GET/POST), pagination, form validation, 
 - ✅ Handle offline mode with a dedicated screen
 
 ---
+## 🧹 Code Style — SwiftLint
+
+This project uses [SwiftLint](https://github.com/realm/SwiftLint) to enforce a consistent code style.
+
+To install SwiftLint:
+
+```bash
+brew install swiftlint
 
 ## 🛠️ Tech Stack
 

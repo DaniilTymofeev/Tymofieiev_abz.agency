@@ -1,0 +1,17 @@
+disabled_rules:
+  - line_length
+
+excluded:
+  - Pods
+  - Carthage
+  - .git
+  - build
+
+type_name:
+  allowed_symbols: ["_"]
+  min_length:
+    warning: 3
+    error: 2
+  max_length:
+    warning: 40
+    error: 50
