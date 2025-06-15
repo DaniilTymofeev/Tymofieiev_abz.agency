@@ -16,12 +16,8 @@ struct RootView: View {
             switch coordinator.route {
             case .splash:
                 SplashScreenView()
-            case .users:
-                Text("Users")
-                    .foregroundStyle(.blue)
-            case .registration:
-                Text("registration")
-                    .foregroundStyle(.blue)
+            case .mainTabs:
+                MainTabView()
             case .noConnection:
                 NoInternetConnectionView()
             }

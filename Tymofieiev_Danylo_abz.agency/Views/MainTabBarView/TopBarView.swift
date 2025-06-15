@@ -14,11 +14,9 @@ struct TopBarView: View {
         ZStack {
             Color(asset: Asset.appPrimaryColor)
                 .frame(height: 56)
-                .ignoresSafeArea(edges: .top)
             
             Text(title)
                 .typography(.heading1, color: Color(asset: Asset.topBarTitleColor))
-            
         }
     }
 }

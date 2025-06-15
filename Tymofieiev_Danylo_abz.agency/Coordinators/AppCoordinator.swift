@@ -12,8 +12,7 @@ import SwiftUI
 final class AppCoordinator: ObservableObject {
     enum Route {
         case splash
-        case users
-        case registration
+        case mainTabs
         case noConnection
     }
 
@@ -43,23 +42,17 @@ final class AppCoordinator: ObservableObject {
                 route = .noConnection
             }
         } else {
-            route = .users
-            lastValidRoute = .users
+            route = .mainTabs
+            lastValidRoute = .mainTabs
         }
         didFinishInitialRouting = true
-    }
-
-    func goToRegistration() {
-        route = .registration
-        lastValidRoute = .registration
     }
     
     func tryReconnect() {
         if lastValidRoute != .noConnection {
             route = lastValidRoute
         } else {
-            // fallback if lastValidRoute is noConnection (unlikely)
-            route = .users
+            route = .mainTabs
         }
     }
 }
