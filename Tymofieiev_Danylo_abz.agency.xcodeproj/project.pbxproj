@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2E6F10352DFE02FD00A97428 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F10342DFE02F700A97428 /* swiftgen.yml */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2E6F10022DFDAA9400A97428 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		2E6F0FF42DFDAA9000A97428 /* Tymofieiev_Danylo_abz.agency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tymofieiev_Danylo_abz.agency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6F10012DFDAA9400A97428 /* Tymofieiev_Danylo_abz.agencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tymofieiev_Danylo_abz.agencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6F100B2DFDAA9400A97428 /* Tymofieiev_Danylo_abz.agencyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tymofieiev_Danylo_abz.agencyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E6F10342DFE02F700A97428 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		2E6F0FEB2DFDAA9000A97428 = {
 			isa = PBXGroup;
 			children = (
+				2E6F10342DFE02F700A97428 /* swiftgen.yml */,
 				2E6F0FF62DFDAA9000A97428 /* Tymofieiev_Danylo_abz.agency */,
 				2E6F10042DFDAA9400A97428 /* Tymofieiev_Danylo_abz.agencyTests */,
 				2E6F100E2DFDAA9400A97428 /* Tymofieiev_Danylo_abz.agencyUITests */,
@@ -99,10 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E6F10152DFDAA9400A97428 /* Build configuration list for PBXNativeTarget "Tymofieiev_Danylo_abz.agency" */;
 			buildPhases = (
+				2E6F103A2DFE050B00A97428 /* Run SwiftGen */,
 				2E6F0FF02DFDAA9000A97428 /* Sources */,
 				2E6F0FF12DFDAA9000A97428 /* Frameworks */,
 				2E6F0FF22DFDAA9000A97428 /* Resources */,
-				2E6F10212DFDBA4700A97428 /* ShellScript */,
+				2E6F10212DFDBA4700A97428 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -215,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6F10352DFE02FD00A97428 /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,8 +243,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2E6F10212DFDBA4700A97428 /* ShellScript */ = {
+		2E6F10212DFDBA4700A97428 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -244,6 +253,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run SwiftLint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -251,6 +261,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n  swiftlint lint \"${SRCROOT}\"\nelse\n  echo \"warning: SwiftLint not installed\"\nfi\n\n\n\n";
+		};
+		2E6F103A2DFE050B00A97428 /* Run SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftGen";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftgen >/dev/null; then\n  swiftgen config run\nelse\n  echo \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

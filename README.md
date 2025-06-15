@@ -23,6 +23,19 @@ To install SwiftLint:
 ```bash
 brew install swiftlint
 
+## ✨ Code Generation — SwiftGen
+
+This project uses [SwiftGen](https://github.com/SwiftGen/SwiftGen) to generate type-safe access to:
+
+- Localized strings
+- Image and Color assets
+
+To install SwiftGen:
+
+```bash
+brew install swiftgen
+
+
 ## 🛠️ Tech Stack
 
 - **SwiftUI**

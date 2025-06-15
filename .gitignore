@@ -2,3 +2,7 @@
 DerivedData
 *.xcuserstate
 
+# Ignore SwiftGen output
+Tymofieiev_Danylo_abz.agency/Generated/
+
+

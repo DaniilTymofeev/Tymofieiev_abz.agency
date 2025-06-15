@@ -6,6 +6,9 @@ excluded:
   - Carthage
   - .git
   - build
+  - Tymofieiev_Danylo_abz.agency/Generated
+  - Tymofieiev_Danylo_abz.agencyTests
+  - Tymofieiev_Danylo_abz.agencyUITests
 
 type_name:
   allowed_symbols: ["_"]

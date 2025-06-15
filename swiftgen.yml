@@ -1,0 +1,18 @@
+# swiftgen.yml
+# Tymofieiev_Danylo_abz.agency
+# Created by Danil Tymofeev on 14.06.2025
+
+
+strings:
+  inputs:
+    - Tymofieiev_Danylo_abz.agency/Resources/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Tymofieiev_Danylo_abz.agency/Generated/Strings.swift
+
+xcassets:
+  inputs:
+    - Tymofieiev_Danylo_abz.agency/Resources/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: Tymofieiev_Danylo_abz.agency/Generated/Assets.swift
