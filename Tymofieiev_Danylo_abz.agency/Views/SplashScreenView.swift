@@ -1,0 +1,32 @@
+//
+//  SplashScreen.swift
+//  Tymofieiev_Danylo_abz.agency
+//
+//  Created by Danil Tymofeev on 15.06.2025.
+//
+
+import SwiftUI
+
+struct SplashScreenView: View {
+    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var networkMonitor: NetworkMonitor
+    @State private var isLoading = true
+
+    var body: some View {
+        ZStack {
+            Color(asset: Asset.appBackgroundColor)
+                .ignoresSafeArea()
+            
+            ProgressView()
+                .progressViewStyle(.circular)
+                .tint(.gray)
+                .scaleEffect(1.5)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                isLoading = false
+                coordinator.proceedAfterSplash(connected: networkMonitor.isConnected)
+            }
+        }
+    }
+}

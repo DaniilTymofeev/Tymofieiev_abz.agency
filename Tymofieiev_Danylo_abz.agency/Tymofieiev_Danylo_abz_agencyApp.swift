@@ -8,10 +8,15 @@
 import SwiftUI
 
 @main
-struct Tymofieiev_Danylo_abz_agencyApp: App {
+struct MyApp: App {
+    @StateObject var networkMonitor = NetworkMonitor()
+    @StateObject var coordinator = AppCoordinator()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(coordinator)
+                .environmentObject(networkMonitor)
         }
     }
 }
