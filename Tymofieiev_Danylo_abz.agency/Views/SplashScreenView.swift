@@ -17,10 +17,7 @@ struct SplashScreenView: View {
             Color(asset: Asset.appBackgroundColor)
                 .ignoresSafeArea()
             
-            ProgressView()
-                .progressViewStyle(.circular)
-                .tint(.gray)
-                .scaleEffect(1.5)
+            CustomProgressView()
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {// artificial delay to show SplashScreen

@@ -19,6 +19,7 @@ struct MainTabView: View {
                 case .signUp: SignUpView()
                 }
             }
+            .background(Color(asset: Asset.appBackgroundColor))
             // Bottom separator
             Rectangle()
                 .fill(Color.gray.opacity(0.2))
@@ -28,6 +29,6 @@ struct MainTabView: View {
             CustomTabBar(selectedTab: $selectedTab)
         }
         .ignoresSafeArea(edges: .bottom)
-        .background(Color.white.ignoresSafeArea())
+        .background(Color(asset: Asset.appBackgroundColor).ignoresSafeArea())
     }
 }
