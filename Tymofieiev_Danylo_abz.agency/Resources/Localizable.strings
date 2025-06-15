@@ -5,4 +5,48 @@
 //  Created by Danil Tymofeev on 14.06.2025.
 //
 
-"ok" = "ok";
+//MARK: - General Strings
+"users" = "Users";
+"signUp" = "Sign up";
+"tryAgain" = "Try again";
+"email" = "Email";
+"phone" = "Phone";
+"select" = "Select";
+"gotIt" = "Got it";
+"cancel" = "Cancel";
+"camera" = "Camera";
+"gallery" = "Gallery";
+
+// MARK: - Launch Screen
+"launchScreenTestTask" = "TESTTASK";
+
+// MARK: - No Internet Connection
+"noConnectionTitle" = "There is no internet connection";
+
+//MARK: - Navigation Titles
+"navBarTitleGet" = "Working with GET request";
+"navBarTitlePost" = "Working with POST request";
+
+// MARK: - Users
+"usersEmptyText" = "There are no users yet";
+
+// MARK: - Sign Up
+"namePlaceholder" = "Your name";
+"phoneFormatHint" = "+38 (XXX) XXX - XX - XX";
+"selectPositionTitle" = "Select your position";
+"frontendDeveloper" = "Frontend developer";
+"backendDeveloper" = "Backend developer";
+"designer" = "Designer";
+"qa" = "QA";
+"uploadPhotoTitle" = "Upload your photo";
+
+"signupSuccess" = "User successfully registered";
+"signupError" = "That email is already registered";
+
+// MARK: - Validation Errors
+"requiredField" = "Required field";
+"invalidEmail" = "Invalid email format";
+"photoRequired" = "Photo is required";
+
+// MARK: - Photo Selection
+"photoSelectionTitle" = "Choose how you want to add a photo";
