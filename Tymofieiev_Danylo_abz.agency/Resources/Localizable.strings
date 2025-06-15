@@ -22,6 +22,7 @@
 
 // MARK: - No Internet Connection
 "noConnectionTitle" = "There is no internet connection";
+"stillNoConnection" = "Still no connection";
 
 //MARK: - Navigation Titles
 "navBarTitleGet" = "Working with GET request";

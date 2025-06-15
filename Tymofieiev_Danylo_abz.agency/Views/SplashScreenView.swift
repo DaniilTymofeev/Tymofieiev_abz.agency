@@ -23,9 +23,9 @@ struct SplashScreenView: View {
                 .scaleEffect(1.5)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {// artificial delay to show SplashScreen
                 isLoading = false
-                coordinator.proceedAfterSplash(connected: networkMonitor.isConnected)
+                coordinator.proceedAfterSplash(isConnected: networkMonitor.isConnected)
             }
         }
     }

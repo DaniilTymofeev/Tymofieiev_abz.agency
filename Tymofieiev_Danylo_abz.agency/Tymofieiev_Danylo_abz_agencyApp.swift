@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MyApp: App {
-    @StateObject var networkMonitor = NetworkMonitor()
+    @StateObject var networkMonitor = NetworkMonitor.shared
     @StateObject var coordinator = AppCoordinator()
 
     var body: some Scene {

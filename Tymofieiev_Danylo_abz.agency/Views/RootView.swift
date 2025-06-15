@@ -23,13 +23,13 @@ struct RootView: View {
                 Text("registration")
                     .foregroundStyle(.blue)
             case .noConnection:
-                Text("noConnection")
-                    .foregroundStyle(.red)
+                NoInternetConnectionView()
             }
         }
         .onReceive(networkMonitor.$isConnected) { isConnected in
-            coordinator.updateRouteBasedOnConnection(isConnected)
+            if !isConnected {
+                coordinator.updateRouteBasedOnConnection(false)
+            }
         }
     }
 }
-
