@@ -23,14 +23,13 @@ struct NoInternetConnectionView: View {
                 Text(L10n.noConnectionTitle)
                     .foregroundStyle(.black)
                     .font(AppFonts.nunitoRegular(size: 20))
-                Button(L10n.tryAgain) {
+                CustomButton(title: L10n.tryAgain, type: .primary, isDisabled: false) {
                     if networkMonitor.isConnected {
                         coordinator.tryReconnect()
                     } else {
                         showAlert = true
                     }
                 }
-                .foregroundStyle(.black)
             }
         }
         .alert(L10n.stillNoConnection, isPresented: $showAlert) {

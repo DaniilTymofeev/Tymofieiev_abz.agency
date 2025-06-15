@@ -24,9 +24,9 @@
 "noConnectionTitle" = "There is no internet connection";
 "stillNoConnection" = "Still no connection";
 
-//MARK: - Navigation Titles
-"navBarTitleGet" = "Working with GET request";
-"navBarTitlePost" = "Working with POST request";
+//MARK: - TopBar Titles
+"topBarTitleGet" = "Working with GET request";
+"topBarTitlePost" = "Working with POST request";
 
 // MARK: - Users
 "usersEmptyText" = "There are no users yet";
