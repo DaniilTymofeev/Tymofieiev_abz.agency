@@ -20,7 +20,9 @@ struct UsersView: View {
                         UserRowView(user: user)
                             .onAppear {
                                 if user == viewModel.users.last {
-                                    viewModel.loadNextPage()
+                                    Task {
+                                        await viewModel.loadNextPage()
+                                    }
                                 }
                             }
                             .listRowSeparator(.hidden)
@@ -55,7 +57,9 @@ struct UsersView: View {
             }
         }
         .onAppear {
-            viewModel.loadInitialUsers()
+            Task {
+                await viewModel.loadInitialUsers()
+            }
         }
         .background(Color(asset: Asset.appBackgroundColor))
         .navigationBarTitleDisplayMode(.inline)

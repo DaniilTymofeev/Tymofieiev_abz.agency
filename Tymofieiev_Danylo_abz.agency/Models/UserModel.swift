@@ -7,7 +7,17 @@
 
 import SwiftUI
 
-struct UserModel: Identifiable, Decodable, Equatable {
+struct UsersResponse: Codable {
+    let users: [UserModel]
+    let totalPages: Int
+
+    enum CodingKeys: String, CodingKey {
+        case users
+        case totalPages = "total_pages"
+    }
+}
+
+struct UserModel: Identifiable, Codable, Equatable {
     let id: Int
     let name: String
     let email: String
