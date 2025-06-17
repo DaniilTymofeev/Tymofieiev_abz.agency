@@ -30,13 +30,13 @@ struct UsersView: View {
                             .listRowInsets(EdgeInsets())
 
                     }
-
-                    // Loader at the bottom when paginating
                     if viewModel.isPaginating {
                         HStack {
                             Spacer()
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                            ArcProgressView()
+                                .padding(8)
+                                .background(Color(asset:Asset.appBackgroundColor))
+                                .clipShape(Circle())
                             Spacer()
                         }
                         .listRowBackground(Color.clear)

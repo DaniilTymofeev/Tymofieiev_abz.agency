@@ -15,19 +15,22 @@ struct UserRowView: View {
             HStack(alignment: .top, spacing: 16) {
                 AsyncImage(url: URL(string: user.photo)) { image in
                     image.resizable()
+                    image.scaledToFit()
                 } placeholder: {
                     Image(asset: Asset.noAvatarCover)
+                        .resizable()
+                        .scaledToFit()
                 }
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
-
+                
                 VStack(alignment: .leading, spacing: 4) {
                     Text(user.name)
                         .typography(.body2)
-
+                    
                     Text(user.position)
                         .typography(.body3, color: Color.black.opacity(0.6))
-
+                    
                     VStack(alignment: .leading, spacing: 2) {
                         Text(user.email)
                             .typography(.body3)

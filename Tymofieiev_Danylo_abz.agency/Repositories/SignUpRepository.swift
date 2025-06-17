@@ -41,13 +41,14 @@ final class SignUpRepository: SignUpRepositoryProtocol {
     }
     
     func signUpUser(_ requestModel: SignUpRequest) async throws {
+        guard let token = AppDefaults.token else { return }
         let url = URL(string: "https://frontend-test-assignment-api.abz.agency/api/v1/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
         let boundary = UUID().uuidString
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue("YOUR_TOKEN_HERE", forHTTPHeaderField: "Token")
+        request.setValue(token, forHTTPHeaderField: "Token")
         
         let httpBody = createMultipartBody(
             requestModel: requestModel,

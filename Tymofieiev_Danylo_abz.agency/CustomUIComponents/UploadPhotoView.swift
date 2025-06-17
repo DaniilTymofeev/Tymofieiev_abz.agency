@@ -88,7 +88,7 @@ struct UploadPhotoView: View {
         .onAppear {
             updateFieldState()
         }
-        .onChange(of: imageData.wrappedValue) { _ in
+        .onChange(of: imageData.wrappedValue) {
             updateFieldState()
         }
     }
