@@ -91,7 +91,7 @@ struct CustomTextField: View {
                             .frame(maxHeight: .infinity, alignment: showMiniLabel ? .top : .center)
                             .background(Color.clear)
                             .padding(.bottom, showMiniLabel ? 8 : 0)
-                            .onChange(of: text) { oldValue, newValue in
+                            .onChange(of: text) { _, newValue in
                                 isTyping = true
                                 showMiniLabel = isFocused || !newValue.isEmpty
                                 fieldState = .focused
@@ -116,7 +116,7 @@ struct CustomTextField: View {
                 .foregroundColor(currentHintColor)
                 .padding(.horizontal, 16)
         }
-        .onChange(of: isFocused) { oldValue, focused in
+        .onChange(of: isFocused) { _, focused in
             showMiniLabel = focused || !text.isEmpty
             if focused {
                 wasFocusedAtLeastOnce = true

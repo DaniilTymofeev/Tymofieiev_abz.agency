@@ -19,13 +19,13 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         guard monitor.isConnected else {
-            LogManager.logError(NetworkError.noInternet, url: endpoint.url?.absoluteString ?? "")
-            throw NetworkError.noInternet
+            LogManager.logError(APIError.noInternet, url: endpoint.url?.absoluteString ?? "")
+            throw APIError.noInternet
         }
 
         guard let url = endpoint.url else {
-            LogManager.logError(NetworkError.badURL, url: "")
-            throw NetworkError.badURL
+            LogManager.logError(APIError.badURL, url: "")
+            throw APIError.badURL
         }
 
         var request = URLRequest(url: url)
@@ -46,7 +46,7 @@ final class NetworkManager {
             (data, response) = try await URLSession.shared.data(for: request)
         } catch {
             LogManager.logError(error, url: url.absoluteString)
-            throw NetworkError.unknown(error)
+            throw APIError.unknownError
         }
 
         #if DEBUG
@@ -58,13 +58,12 @@ final class NetworkManager {
         #endif
 
         guard let httpResponse = response as? HTTPURLResponse else {
-            let error = NetworkError.unknown(NSError(domain: "Invalid response", code: 0))
-            LogManager.logError(error, url: url.absoluteString)
-            throw error
+            LogManager.logError(APIError.unknownError, url: url.absoluteString)
+            throw APIError.unknownError
         }
 
         guard (200...299).contains(httpResponse.statusCode) else {
-            let error = NetworkError.serverError(statusCode: httpResponse.statusCode)
+            let error = APIError.serverError(statusCode: httpResponse.statusCode)
             LogManager.logError(error, url: url.absoluteString)
             throw error
         }
@@ -72,7 +71,7 @@ final class NetworkManager {
         do {
             return try JSONDecoder().decode(responseType, from: data)
         } catch {
-            let decodingError = NetworkError.decodingError(error)
+            let decodingError = APIError.decodingError
             LogManager.logError(decodingError, url: url.absoluteString)
             throw decodingError
         }

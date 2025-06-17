@@ -35,7 +35,7 @@ final class UsersViewModel: ObservableObject {
             self.totalPages = response.totalPages
             self.currentPage += 1
         } catch {
-            errorMessage = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
+            errorMessage = (error as? APIError)?.errorDescription ?? error.localizedDescription
         }
 
         isLoading = false
@@ -53,7 +53,7 @@ final class UsersViewModel: ObservableObject {
             self.users += response.users
             self.currentPage += 1
         } catch {
-            errorMessage = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
+            errorMessage = (error as? APIError)?.errorDescription ?? error.localizedDescription
         }
 
         isPaginating = false

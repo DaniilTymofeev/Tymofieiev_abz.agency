@@ -32,9 +32,8 @@ func prettyPrintedJSON(from data: Data) -> String? {
     do {
         let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
         let prettyData = try JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted])
-        return String(decoding: prettyData, as: UTF8.self)
+        return String(data: prettyData, encoding: .utf8)
     } catch {
         return nil
     }
 }
-

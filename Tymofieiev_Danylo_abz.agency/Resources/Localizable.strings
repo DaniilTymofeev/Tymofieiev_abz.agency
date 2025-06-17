@@ -11,11 +11,12 @@
 "tryAgain" = "Try again";
 "email" = "Email";
 "phone" = "Phone";
-"select" = "Select";
+"upload" = "Upload";
 "gotIt" = "Got it";
 "cancel" = "Cancel";
 "camera" = "Camera";
 "gallery" = "Gallery";
+"replace" = "Replace";
 
 // MARK: - Launch Screen
 "launchScreenTestTask" = "TESTTASK";
