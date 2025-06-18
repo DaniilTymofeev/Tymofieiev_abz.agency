@@ -5,7 +5,7 @@ It demonstrates working with REST APIs (GET/POST), pagination, form validation, 
 
 I've created all the key feature listed, applied all designs and mockups, used all the available information given to me. Also I had a great time practising, polishing and improving developer fundamentals, design patterns, best practices, applying better UX for users. I had a lot of inspiration to put into this test App, making it better, showing my vision, while still be 99.9% strict to design and assignment i was given.
 
-Thnank You
+Thank You
 
 ## RESOURCES
 Assignment link - https://drive.google.com/file/d/1FYz7jemW9O2mGV6R-MUjZc7ZQa1L3ZLh/view
@@ -70,8 +70,8 @@ https://github.com/user-attachments/assets/f016bb2b-3a6d-46bd-9ae1-a3a7e5ffa816
 
 3️⃣ Validation in-App and from API
 - showcase of all validations inside the App on sign up;
-- sign up button will be enabled when at least 1 filed have at least 1 character, nevertheless, tapping on it will light up all validational errors until managed;
-- I used conditions, errors and hints from the assingment's docs and from server information (from Swagger too);
+- sign up button will be enabled when at least 1 filed have at least 1 character, nevertheless, tapping on it will light up all validation errors until managed;
+- I used conditions, errors and hints from the assignments docs and from server information (from Swagger too);
 - also created custom validations like:
   a. based on textField design, i managed 3 states; on focusing on one, it shows all 'selected' colors, when typing i switched mini label to normal color or until the validation error kicks in;
   b. hints turns into error messages and validation suggestions based on API requirments;
@@ -86,8 +86,8 @@ https://github.com/user-attachments/assets/798034da-a66d-4c4f-b1b2-e2de9cc2b6b0
 - token is saved on initial launch into UserDefaults;
 - if you try to sign up, it might be expired;
 - i decided not to auto-update token when used (like in real app will be done) just to simulate this test case;
-- user can 'try again' in SignUpResult screen - while getting error with token, on pressing the button it will fetch new one and automatically try to sign up again;
-- also i though of this due to not wanting testers to terminating and relaunching an App (you still can simulate token expiration error and IF you want, you can manualy fetch new one without app been closed);
+- user can 'try again' in SignUpResult screen while getting error with token, on pressing the button it will fetch new one and automatically try to sign up again;
+- also i though of this due to not wanting testers to terminating and launching an App (you still can simulate token expiration error and IF you want, you can manually fetch new one without app been closed);
 
 https://github.com/user-attachments/assets/124031f1-34e3-497e-8a8d-158b838599d9
 
