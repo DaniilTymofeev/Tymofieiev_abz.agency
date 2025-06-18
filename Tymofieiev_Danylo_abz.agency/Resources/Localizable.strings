@@ -47,8 +47,16 @@
 
 // MARK: - Validation Errors
 "requiredField" = "Required field";
+"invalidName" = "Name must be 2-60 characters long";
 "invalidEmail" = "Invalid email format";
+"invalidPhone" = "Phone must start with +380 and contain 9 digits";
 "photoRequired" = "Photo is required";
+"invalidPhotoSize" = "Photo must not exceed 5 MB";
+"invalidPhotoFormat" = "Only JPEG/JPG format allowed";
+"invalidPhotoDimension" = "Minimum size is 70x70px";
 
 // MARK: - Photo Selection
 "photoSelectionTitle" = "Choose how you want to add a photo";
+
+// MARK: - Errors
+"somethingWentWrong" = "Something went wrong";

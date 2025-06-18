@@ -7,12 +7,14 @@
 
 import Foundation
 
-enum APIError: Error, LocalizedError {
+enum APIError: Error, LocalizedError, Equatable {
     case noInternet
     case badURL
     case serverError(statusCode: Int)
     case decodingError
     case unknownError
+    case tokenExpired
+    case serverErrorWithMessage(statusCode: Int, message: String)
     
     var errorDescription: String? {
         switch self {
@@ -26,13 +28,29 @@ enum APIError: Error, LocalizedError {
             return "Failed to decode response."
         case .unknownError:
             return "An unknown error occurred."
+        case .tokenExpired:
+            return "Your token has expired. Please try again."
+        case .serverErrorWithMessage(_, let message):
+            return message
         }
     }
     
-// Error: response status is 401
-//    {
-//      "success": false,
-//      "message": "Invalid token. Try to get a new one by the method POST api/v1/token."
-//    }
-    
+    // to compare responses if message text different (tokenExpired)
+    static func == (lhs: APIError, rhs: APIError) -> Bool {
+        switch (lhs, rhs) {
+        case (.noInternet, .noInternet),
+            (.badURL, .badURL),
+            (.decodingError, .decodingError),
+            (.unknownError, .unknownError),
+            (.tokenExpired, .tokenExpired):
+            return true
+        case (.serverError(let left), .serverError(let right)):
+            return left == right
+        case (.serverErrorWithMessage(let lCode, let lMsg),
+              .serverErrorWithMessage(let rCode, let rMsg)):
+            return lCode == rCode && lMsg == rMsg
+        default:
+            return false
+        }
+    }
 }

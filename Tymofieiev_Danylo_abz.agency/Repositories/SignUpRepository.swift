@@ -10,56 +10,50 @@ import UIKit
 protocol SignUpRepositoryProtocol {
     func fetchToken() async throws -> String
     func getPositions() async throws -> [Position]
-    func signUpUser(_ requestModel: SignUpRequest) async throws
+    func signUpUser(_ requestModel: SignUpRequest) async throws -> SignUpResponse?
 }
 
 final class SignUpRepository: SignUpRepositoryProtocol {
     func fetchToken() async throws -> String {
-        let url = URL(string: "https://frontend-test-assignment-api.abz.agency/api/v1/token")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let response = try await APIClient.shared.request(
-            request: request,
-            decodeType: TokenResponse.self
+        let response = try await NetworkManager.shared.request(
+            endpoint: APIEndpoint.postToken,
+            responseType: TokenResponse.self
         )
         return response.token
     }
     
     func getPositions() async throws -> [Position] {
-        let url = URL(string: "https://frontend-test-assignment-api.abz.agency/api/v1/positions")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-
-        let response = try await APIClient.shared.request(
-            request: request,
-            decodeType: PositionResponse.self
+        let response = try await NetworkManager.shared.request(
+            endpoint: APIEndpoint.getPositions,
+            responseType: PositionResponse.self
         )
         return response.positions
     }
     
-    func signUpUser(_ requestModel: SignUpRequest) async throws {
-        guard let token = AppDefaults.token else { return }
-        let url = URL(string: "https://frontend-test-assignment-api.abz.agency/api/v1/users")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+    func signUpUser(_ requestModel: SignUpRequest) async throws -> SignUpResponse? {
+        guard let token = AppDefaults.token else { return nil }
         
         let boundary = UUID().uuidString
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue(token, forHTTPHeaderField: "Token")
+        let bodyData = createMultipartBody(requestModel: requestModel, boundary: boundary)
         
-        let httpBody = createMultipartBody(
-            requestModel: requestModel,
-            boundary: boundary
-        )
-        request.httpBody = httpBody
+        let headers = [
+            "Accept": "application/json",
+            "Token": token,
+            "Content-Type": "multipart/form-data"  // boundary added by NetworkManager.makeRequest
+        ]
         
-        let _ = try await APIClient.shared.request(
-            request: request,
-            decodeType: SignUpResponse.self
+        let signUpEndpoint = APIEndpoint.postUser(httpMethod: "POST", headers: headers)
+        
+        let logModel = LoggableSignUpRequest(from: requestModel)
+        
+        let response = try await NetworkManager.shared.request(
+            endpoint: signUpEndpoint,
+            bodyData: bodyData,
+            boundary: boundary,
+            responseType: SignUpResponse.self,
+            logModel: logModel
         )
+        return response
     }
     
     private func createMultipartBody(
