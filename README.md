@@ -12,6 +12,14 @@ Assignment link - https://drive.google.com/file/d/1FYz7jemW9O2mGV6R-MUjZc7ZQa1L3
 Design link - https://www.figma.com/design/Ip7bsgTfPlzszIEyIwXzUa/Testtask---App?node-id=85-576&t=BFTUZOnjvMF57Rc0-0
 API link - https://openapi_apidocs.abz.dev/frontend-test-assignment-v1#/positions/get_positions
 
+
+# INSTALATION
+Be aware, that I'm using SwiftLint and SwiftGen, that are operate by srepit in Build Phases
+I used to install them via HomeBrew
+brew install swiftlint
+brew install swiftgen
+
+
 ---
 
 ## 🚀 Features
