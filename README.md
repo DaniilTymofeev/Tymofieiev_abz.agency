@@ -3,7 +3,7 @@
 A simple SwiftUI application built as a test task for an interview.  
 It demonstrates working with REST APIs (GET/POST), pagination, form validation, and offline mode handling.
 
-I've created all the key feature listed, applied all designs and mockups, used all the available information given to me. Also I had a great time practising, polishing and impoving developer fundamentals, design paterns, best practices, applying better UX for users. I had a lot of insiparation to put into this test App, making it better, showing my vision, while still be 99.9% stricked to design and assignment i was given.
+I've created all the key feature listed, applied all designs and mockups, used all the available information given to me. Also I had a great time practising, polishing and improving developer fundamentals, design patterns, best practices, applying better UX for users. I had a lot of inspiration to put into this test App, making it better, showing my vision, while still be 99.9% strict to design and assignment i was given.
 
 Thnank You
 
