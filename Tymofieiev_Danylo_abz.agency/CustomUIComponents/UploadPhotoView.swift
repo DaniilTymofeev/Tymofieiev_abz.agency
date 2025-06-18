@@ -18,6 +18,8 @@ struct UploadPhotoView: View {
     let imageData: Binding<Data?>
     let onUploadTap: () -> Void
     let validation: () -> String?
+    @Binding var triggerValidation: Bool
+    @State private var showError: Bool = false
 
     @State private var fieldState: FieldState = .normal
 
@@ -85,11 +87,16 @@ struct UploadPhotoView: View {
                 .foregroundColor(currentHintColor)
                 .padding(.horizontal, 16)
         }
-        .onAppear {
-            updateFieldState()
+        .onChange(of: triggerValidation) { _, newValue in
+            if newValue {
+                updateFieldState()
+            }
         }
-        .onChange(of: imageData.wrappedValue) {
-            updateFieldState()
+        .onChange(of: imageData.wrappedValue) { _, _ in
+            if validation() == nil {
+                showError = false
+                fieldState = .normal
+            }
         }
     }
 

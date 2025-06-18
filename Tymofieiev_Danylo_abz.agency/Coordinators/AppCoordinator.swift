@@ -17,12 +17,14 @@ final class AppCoordinator: ObservableObject {
     }
 
     @Published var route: Route = .splash
+    @Published var selectedTab: Tab = .users
+
     private var lastValidRoute: Route = .splash
     private var didFinishInitialRouting = false
 
     func updateRouteBasedOnConnection(_ isConnected: Bool) {
         guard didFinishInitialRouting else { return }
-        
+
         if isConnected {
             if route == .noConnection {
                 route = lastValidRoute
@@ -47,7 +49,7 @@ final class AppCoordinator: ObservableObject {
         }
         didFinishInitialRouting = true
     }
-    
+
     func tryReconnect() {
         if lastValidRoute != .noConnection {
             route = lastValidRoute
@@ -56,3 +58,4 @@ final class AppCoordinator: ObservableObject {
         }
     }
 }
+

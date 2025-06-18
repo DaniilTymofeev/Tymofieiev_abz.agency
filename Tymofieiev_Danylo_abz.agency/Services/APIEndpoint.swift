@@ -14,7 +14,7 @@ enum APIEndpoint {
     case getUserById(id: Int)
     case getPositions
     case postToken
-    case postUser
+    case postUser(httpMethod: String = "POST", headers: [String: String]? = nil)
     
     var url: URL? {
         switch self {
@@ -33,8 +33,10 @@ enum APIEndpoint {
     
     var httpMethod: String {
         switch self {
-        case .postToken, .postUser:
+        case .postToken:
             return "POST"
+        case .postUser(let method, _):
+            return method
         default:
             return "GET"
         }
@@ -42,12 +44,10 @@ enum APIEndpoint {
     
     var headers: [String: String]? {
         switch self {
-        case .postUser:
-            return [
-                "Accept": "application/json",
-                "Token": "YOUR_TOKEN_HERE",
-                "Content-Type": "multipart/form-data"
-            ]
+        case .postUser(_, let headers):
+            return headers
+        case .postToken:
+            return ["Accept": "application/json"]
         default:
             return nil
         }
@@ -57,6 +57,7 @@ enum APIEndpoint {
         guard let url = url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
+        
         headers?.forEach { key, value in
             if key == "Content-Type", let boundary = boundary {
                 request.setValue("\(value); boundary=\(boundary)", forHTTPHeaderField: key)
@@ -64,6 +65,7 @@ enum APIEndpoint {
                 request.setValue(value, forHTTPHeaderField: key)
             }
         }
+        
         request.httpBody = body
         return request
     }

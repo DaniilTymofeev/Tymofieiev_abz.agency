@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SignUpRequest {
+struct SignUpRequest: Encodable {
     let name: String
     let email: String
     let phone: String
@@ -24,5 +24,21 @@ struct SignUpResponse: Decodable {
         case success
         case userId = "user_id"
         case message
+    }
+}
+
+struct LoggableSignUpRequest: Encodable {
+    let name: String
+    let email: String
+    let phone: String
+    let positionId: Int
+    let photoDataDescription: String
+
+    init(from original: SignUpRequest) {
+        self.name = original.name
+        self.email = original.email
+        self.phone = original.phone
+        self.positionId = original.positionId
+        self.photoDataDescription = original.photoData != nil ? "Attached (\(original.photoData!.count) bytes)" : "nil"
     }
 }
