@@ -14,9 +14,10 @@ API link - https://openapi_apidocs.abz.dev/frontend-test-assignment-v1#/position
 
 
 # INSTALATION
-Be aware, that I'm using SwiftLint and SwiftGen, that are operate by srepit in Build Phases
-I used to install them via HomeBrew
+Be aware, that I'm using SwiftLint and SwiftGen, that are operate by srepit in Build Phases. I used to install them via HomeBrew.
+
 brew install swiftlint
+
 brew install swiftgen
 
 
